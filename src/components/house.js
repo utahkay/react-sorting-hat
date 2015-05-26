@@ -16,8 +16,13 @@ export default class House extends React.Component {
   //}
 
   render() {
+    var selectedStyle = {
+      "color": "green",
+      "font-weight": "bold"
+    };
+    var style = this.props.selected ? selectedStyle : {};
     return (
-      <span>House {this.props.houseName}</span>
+      <span style={style}>House {this.props.houseName}</span>
     );
   }
 }

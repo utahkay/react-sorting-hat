@@ -7,7 +7,7 @@ export default class Sorter extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]};
+    this.state = {houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"], selectedHouse: "Slytherin"};
   }
 
   componentDidMount() {
@@ -29,7 +29,10 @@ export default class Sorter extends React.Component {
         <ul>
           <li><Hat /></li>
           {
-            _.map(this.state.houses, h => <li><House houseName={h}/></li>)
+            _.map(this.state.houses, h =>
+              <li>
+                <House houseName={h} selected={this.state.selectedHouse === h}/>
+              </li>)
           }
         </ul>
       </div>
