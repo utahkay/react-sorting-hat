@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import Hat from "./hat";
+import House from "./house";
 
 export default class Sorter extends React.Component {
 
@@ -28,7 +29,7 @@ export default class Sorter extends React.Component {
         <ul>
           <li><Hat /></li>
           {
-            _.map(this.state.houses, h => <li>{h}</li>)
+            _.map(this.state.houses, h => <li><House houseName={h}/></li>)
           }
         </ul>
       </div>
