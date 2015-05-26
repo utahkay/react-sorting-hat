@@ -1,10 +1,11 @@
 import React from "react";
+import _ from "lodash";
 
 export default class Sorter extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]};
   }
 
   componentDidMount() {
@@ -23,7 +24,12 @@ export default class Sorter extends React.Component {
   render() {
     return (
       <div>
-      <h1>Sorter controller view</h1>
+        <ul>
+          <li>Hat (click me)</li>
+          {
+            _.map(this.state.houses, h => <li>{h}</li>)
+          }
+        </ul>
       </div>
     );
   }
