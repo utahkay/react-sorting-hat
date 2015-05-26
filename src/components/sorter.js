@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import Hat from "./hat";
 
 export default class Sorter extends React.Component {
 
@@ -25,7 +26,7 @@ export default class Sorter extends React.Component {
     return (
       <div>
         <ul>
-          <li>Hat (click me)</li>
+          <li><Hat /></li>
           {
             _.map(this.state.houses, h => <li>{h}</li>)
           }
