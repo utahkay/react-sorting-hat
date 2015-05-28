@@ -1,26 +1,33 @@
-import React from "react";
-import _ from "lodash";
-import Hat from "./hat";
-import House from "./house";
+import React from "react"
+import _ from "lodash"
+import Hat from "./hat"
+import House from "./house"
+import houseSortingStore from '../stores/house_sorting_store'
+
+function getStateFromStores() {
+  return {
+    houses: houseSortingStore.getHouses(),
+    selectedHouse: houseSortingStore.getSelectedHouse()
+  }
+}
 
 export default class Sorter extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"], selectedHouse: "Slytherin"};
+    super(props)
+    this.state = getStateFromStores()
   }
 
   componentDidMount() {
-    //catalogStore.listen(this.onChange.bind(this));
-    //catalogActions.getCatalog();
+    houseSortingStore.listen(this.onStoreChange.bind(this))
   }
 
   componentWillUnmount() {
-    //catalogStore.unlisten(this.onChange);
+    houseSortingStore.unlisten(this.onStoreChange.bind(this))
   }
 
-  onChange(state) {
-    this.setState(state);
+  onStoreChange() {
+    this.setState(getStateFromStores())
   }
 
   render() {
@@ -36,6 +43,6 @@ export default class Sorter extends React.Component {
           }
         </ul>
       </div>
-    );
+    )
   }
 }
